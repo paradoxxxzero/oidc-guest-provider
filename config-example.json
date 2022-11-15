@@ -1,0 +1,12 @@
+{
+  "client_id": "client id",
+  "client_secret": "client secret",
+  "client_redirect_uris": [
+    "https://your-keycloak.com/realms/your-realm/broker/oidc-guest-provider/endpoint"
+  ],
+  "signing_key": "rs256.rsa",
+  "signing_alg": "RS256",
+  "issuer": "https://idp.yourhost.com/",
+  "salt": "your salt",
+  "rng_size": 32
+}

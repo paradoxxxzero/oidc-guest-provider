@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.locale
+*.rsa
+*.rsa.pub
+config.json
+.env

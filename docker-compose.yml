@@ -1,0 +1,24 @@
+networks:
+  local:
+  traefik:
+    external: true
+
+services:
+  oidc-guest-provider:
+    build: .
+    working_dir: /work
+
+    networks:
+      - local
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      - "traefik.http.routers.ogp.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.ogp.tls=false"
+      - "traefik.http.routers.ogp.service=ogp-service"
+      - "traefik.http.services.ogp-service.loadbalancer.server.port=5002"
+      - "traefik.http.middlewares.ogp_middle.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.ogp.middlewares=ogp_middle"
+
+version: '3.7'
